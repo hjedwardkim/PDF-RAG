@@ -3,7 +3,7 @@ from fastapi import APIRouter
 from app.models.schemas import QueryRequest, QueryResponse
 from app.services.database import (
     get_document_count,
-    get_document_filenames,
+    get_document_names,
     search_similar_documents,
 )
 from app.services.embedding_service import generate_query_embedding
@@ -23,15 +23,8 @@ async def search(query: QueryRequest):
     return QueryResponse(answer=answer)
 
 
-@router.get("/document_count")
-async def document_count():
-    count = await get_document_count()
-
-    return {"document_count": count}
-
-
 @router.get("/document_names")
 async def sample_documents(limit: int = 5):
-    filenames = await get_document_filenames(limit)
+    filenames = await get_document_names(limit)
 
     return {"document_names": filenames}

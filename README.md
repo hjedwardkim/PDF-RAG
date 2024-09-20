@@ -35,11 +35,7 @@ The application will be available at `http://localhost:8000`.
 ## Usage
 You can interact with the RAG Prototype in several ways:
 
-### 1. Web Interface
-Open `http://localhost:8000` in your web browser to access the simple web interface. Here you can:
-- Upload documents
-- Ask questions about the uploaded documents
-### 2. Command-Line Interface (CLI)
+### 1. Command-Line Interface (CLI)
 The `query_cli.py` script provides a command-line interface for interacting with the RAG system.
 
 First, ensure you have the required dependencies:
@@ -65,7 +61,7 @@ Then you can use the CLI as follows:
   python query_cli.py interactive
   ```
 
-### 3. API Endpoints
+### 2. API Endpoints
 
 You can also interact with the RAG system directly through its API endpoints:
 
@@ -79,13 +75,8 @@ You can also interact with the RAG system directly through its API endpoints:
   curl -X POST -H "Content-Type: application/json" -d '{"question":"What is the main topic of the document?"}' http://localhost:8000/api/query
   ```
 
-- Get document count:
+- Get document names:
   ```
-  curl http://localhost:8000/api/document_count
-  ```
-
-- Get document filenames:
-  ```
-  curl http://localhost:8000/api/document_filenames
+  curl http://localhost:8000/api/document_names
   ```
 

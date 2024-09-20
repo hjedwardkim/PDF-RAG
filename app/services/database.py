@@ -67,7 +67,7 @@ async def get_document_count() -> int:
         await conn.close()
 
 
-async def get_document_filenames(limit: int = 20) -> List[Dict]:
+async def get_document_names(limit: int = 20) -> List[Dict]:
     conn = await get_db_connection()
     try:
         rows = await conn.fetch(
