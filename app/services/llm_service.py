@@ -13,9 +13,12 @@ def generate_answer(question: str, context: str) -> str:
     messages = [
         {
             "role": "system",
-            "content": "You are an AI assistant that provides helpful answers based on the provided context.",
+            "content": "You are an AI assistant that provides helpful answers based on the provided context. Synthesize the information and respond in your own words. Avoid direct quotes. If the context doesn't contain relevant information, politely say so.",
         },
-        {"role": "user", "content": f"Context: {context}\n\nQuestion: {question}"},
+        {
+            "role": "user",
+            "content": f"Context: {context}\n\nQuestion: {question}\n\nPlease provide an answer based on the context using your own words.",
+        },
     ]
     response = openai_client.chat.completions.create(
         model=settings.azure_openai_llm_deployment,
