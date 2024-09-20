@@ -18,7 +18,7 @@ def upsert_document(file_path: Path):
 def query_documents(question: str):
     response = requests.post(f"{BASE_URL}/query", json={"question": question})
     result = response.json()
-    typer.echo(f"Answer: {result['answer']}\n")
+    typer.echo(f"Answer >> {result['answer']}\n")
 
 
 @app.command()
@@ -37,14 +37,14 @@ def query(question: str = typer.Argument(..., help="Question to ask")):
 def interactive():
     """Start an interactive session to upsert documents and ask questions."""
     while True:
-        action = typer.prompt("What would you like to do? (upsert/query/quit)")
+        action = typer.prompt("What would you like to do? (upsert/query/quit) >>")
         if action.lower() == "quit":
             break
         elif action.lower() == "upsert":
-            file_path = typer.prompt("Enter the path to the file you want to upsert")
+            file_path = typer.prompt("Enter the path to the file you want to upsert >>")
             upsert_document(Path(file_path))
         elif action.lower() == "query":
-            question = typer.prompt("Enter your question")
+            question = typer.prompt("Prompt >>")
             query_documents(question)
         else:
             typer.echo("Invalid action. Please choose upsert, query, or quit.")
